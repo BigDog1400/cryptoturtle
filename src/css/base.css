@@ -35,7 +35,7 @@ header {
 .search__box-input-container,
 .search__box-result-container {
   display: flex;
-  width: 50%;
+  width: 30%;
   justify-content: center;
   flex-flow: column;
 }
@@ -46,7 +46,6 @@ header {
   flex: 1 0 100%;
 }
 .search__box-input {
-  height: 2em;
   border: none;
   padding: 15px;
   outline: none;
@@ -54,7 +53,7 @@ header {
   background-color: #333333;
   flex: 0 1 100%;
   color: #eeeeee;
-  font-size: 150%;
+  font-size: 100%;
 }
 .search__box-button {
   background-color: #333333;
@@ -67,7 +66,6 @@ header {
   background-repeat: no-repeat;
   border-radius: 0px 5px 5px 0px;
   transition: all 0.1s ease-in;
-  height: 58px;
 }
 .search__box-button:hover {
   background-color: #eeeeee;
@@ -80,10 +78,23 @@ header {
   border-radius: 5px;
   background-color: #333333;
 }
-.search__box-input:hover ~ .search__box-result-container,
-.search__box-input:active ~ .search__box-result-container,
-.search__box-input:focus ~ .search__box-result-container {
+
+.search__box-input:focus ~ .search__box-result-container,
+.search__box-result-container:hover {
   display: flex;
   position: absolute;
-  margin-top: 90px;
+  margin-top: 8em;
+}
+.search-box-result-list {
+  padding: 10px 10px 10px 40px;
+  margin: 0;
+  list-style: none;
+  color: #eeeeee;
+}
+.icon-result-list {
+  vertical-align: middle;
+  height: 15px;
+}
+.result-list-element {
+  margin-top: 1em;
 }

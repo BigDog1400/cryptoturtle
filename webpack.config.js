@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: {
     polyfill: "babel-polyfill",
-    index: "./src/js/index.js",
+    search: "./src/js/controllers/searchController.js",
     style: "./src/css/index.js"
   },
   output: {
@@ -20,7 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",
-      chunks: ["polyfill", "index", "style"]
+      chunks: ["polyfill", "search", "style"]
     })
   ],
   module: {

@@ -35,8 +35,7 @@ header {
 .search__box-input-container,
 .search__box-result-container {
   display: flex;
-  width: 30%;
-  justify-content: center;
+  width: 80%;
   flex-flow: column;
 }
 
@@ -83,9 +82,12 @@ header {
 .search__box-result-container:hover {
   display: flex;
   position: absolute;
-  margin-top: 8em;
+  margin-top: 3.8em;
 }
 .search-box-result-list {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 10px 10px 10px 40px;
   margin: 0;
   list-style: none;
@@ -96,5 +98,30 @@ header {
   height: 15px;
 }
 .result-list-element {
+  cursor: pointer;
   margin-top: 1em;
+  display: flex;
+  padding: 7px;
+}
+.result-list-element.selected {
+  background-color: #494949;
+}
+.cryptocurrency-result-list {
+  flex: 1 0 auto;
+  margin-left: 10px;
+}
+.rank-result-list {
+  margin-left: 15px;
+}
+@media screen and (max-width: 425px) {
+  .search__box-input-container,
+  .search__box-result-container {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .search__box-input-container,
+  .search__box-result-container {
+    width: 30%;
+  }
 }

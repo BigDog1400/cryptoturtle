@@ -9,15 +9,12 @@ export default class Cryptocurrency {
   constructor(query) {
     this.query = query;
   }
-  async getData(numberPage = 0) {
+  async getData() {
     try {
-      const result = await CoinGeckoClient.coins.markets({ vs_currency: "usd", order: "market_cap_desc", per_page: "250", page: numberPage });
-      if (result.length > 0) {
-        console.log(result);
-        this.getData(numberPage + 1);
-      }
+      const result = await CoinGeckoClient.coins.fetch(this.query, {});
+      this.data = result.data;
     } catch (e) {
-      console.log(`Error ${e}`);
+      console.log(`Error: ${e}`);
     } finally {
       console.log("Cryptocurrency information obtained");
     }

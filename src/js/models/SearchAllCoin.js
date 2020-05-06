@@ -1,4 +1,5 @@
 import Cryptocurrency from "./SearchCoin";
+import { rejects } from "assert";
 
 //1. Import coingecko-api
 const CoinGecko = require("coingecko-api");
@@ -23,10 +24,8 @@ export default class GlobalCryptos {
       if (result.data.length > 0) {
         await this.getAllCurrentsCryptos(numberPage + 1);
       }
-    } catch (e) {
-      console.log(`Error ${e}`);
     } finally {
-      console.log("Cryptocurrencys information obtained");
+      console.log("Information obtained");
     }
   }
 
@@ -42,8 +41,7 @@ export default class GlobalCryptos {
       let count = 0;
       do {
         if (currentCoinPosition >= this.GlobalCryptos.length || results.length > 6) {
-          console.log(results);
-          console.log("Terminar");
+          console.log("Terminado la busqueda");
           break;
         }
         if (
@@ -60,5 +58,6 @@ export default class GlobalCryptos {
       }
     };
     seekForCoin();
+    return results;
   }
 }

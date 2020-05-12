@@ -2,6 +2,7 @@ import searchAllCryptos from "../models/SearchAllCoin";
 import searchDataOfCurrency from "../models/SearchCoin";
 import { elements } from "../views/base";
 import { renderResults, highlightResult } from "../views/searchView";
+import * as resultView from "../views/resultView";
 
 const state = {};
 
@@ -33,12 +34,13 @@ const prepareSearchElements = async () => {
 const controlGetCurrencyInformation = async () => {
   if (state.currentCryptoSelected) {
     state.currentSearch = new searchDataOfCurrency(state.currentCryptoSelected.dataset.id);
-
     await state.currentSearch.getData();
-
     console.log(state.currentSearch);
+    //Render results
+    resultView.renderResult(state.currentSearch.data);
   }
 };
+
 const controlChangeCryptoSelected = () => {
   highlightResult(state.currentCryptoSelected ? state.currentCryptoSelected : false, event.target);
   //Change Current Selected Cryptocurrency

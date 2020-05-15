@@ -26,6 +26,7 @@ header {
   align-items: center;
   font-size: 300%;
   margin-bottom: 40px;
+  font-family: "Roboto";
 }
 
 .title__box-icon {
@@ -225,6 +226,6 @@ header {
     width: 30%;
   }
   .currencie__data_container {
-    width: 60%;
+    width: 80%;
   }
 }

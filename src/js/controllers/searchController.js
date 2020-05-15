@@ -33,6 +33,8 @@ const prepareSearchElements = async () => {
 
 const controlGetCurrencyInformation = async () => {
   if (state.currentCryptoSelected) {
+    // Render Loading Spinner
+    resultView.renderLoaderSpinner();
     state.currentSearch = new searchDataOfCurrency(state.currentCryptoSelected.dataset.id);
     await state.currentSearch.getData();
     console.log(state.currentSearch);

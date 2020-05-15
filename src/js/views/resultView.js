@@ -71,10 +71,10 @@ export const renderResult = data => {
           <div class="currencie__data-price">
             <span>Price</span>
             <span class="data-current-price">
-              $${data.market_data.current_price.usd.toString().replace(".", ",")}
+              ${new Intl.NumberFormat({ style: "currency", currency: "USD" }, { maximumFractionDigits: 20 }).format(data.market_data.current_price.usd)}
             </span>
             <span class="data-price-changes-24h ${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}">
-              (${data.market_data.price_change_percentage_24h.toString().slice(0, 5)}%)
+              (${new Intl.NumberFormat({ style: "unit", unit: "percent" }, { maximumFractionDigits: 2 }).format(data.market_data.price_change_percentage_24h)}%)
             </span>
           </div>
           <table class="market-data">
@@ -100,7 +100,7 @@ export const renderResult = data => {
         </div>
       </div>
       <div class="currencie-calculadora">
-        <span class="symbol-origin">Bitcoin</span> <input type="text" class="currencie-origin-input" />
+        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="text" class="currencie-origin-input" />
         <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
         <span class="symbol-destiny">USD</span>
         <input class="currencie-destiny-input" type="text" />
@@ -111,21 +111,24 @@ export const renderResult = data => {
           <tbody>
             <tr>
               <th>24h:</th>
-              <td class="${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}" >${new Intl.NumberFormat().format(
-    data.market_data.price_change_percentage_24h
-  )}%</td>
+              <td class="${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}" >${new Intl.NumberFormat(
+    { style: "unit", unit: "percent" },
+    { maximumFractionDigits: 2 }
+  ).format(data.market_data.price_change_percentage_24h)}%</td>
             </tr>
             <tr>
               <th>7d:</th>
-               <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat().format(
-    data.market_data.price_change_percentage_7d
-  )}%</td>
+               <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat(
+    { style: "unit", unit: "percent" },
+    { maximumFractionDigits: 2 }
+  ).format(data.market_data.price_change_percentage_7d)}%</td>
             </tr>
             <tr>
               <th>14d:</th>
-          <td class="${data.market_data.price_change_percentage_14d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat().format(
-    data.market_data.price_change_percentage_14d
-  )}%</td>
+          <td class="${data.market_data.price_change_percentage_14d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat(
+    { style: "unit", unit: "percent" },
+    { maximumFractionDigits: 2 }
+  ).format(data.market_data.price_change_percentage_14d)}%</td>
              </tr>
           </tbody>
         </table>

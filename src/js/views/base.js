@@ -4,3 +4,7 @@ export const elements = {
   searchBoxResults: document.querySelector(".search__box-result-container"),
   currencieDataResult: document.querySelector(".currencie__data_container")
 };
+export const elementsStrings = {
+  inputCurrencyDestiny: "currencie-destiny-input",
+  inputCurrencyOrigin: "currencie-origin-input"
+};

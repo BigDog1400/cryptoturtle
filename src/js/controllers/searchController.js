@@ -1,6 +1,6 @@
 import searchAllCryptos from "../models/SearchAllCoin";
 import searchDataOfCurrency from "../models/SearchCoin";
-import { elements } from "../views/base";
+import { elements, elementsStrings } from "../views/base";
 import { renderResults, highlightResult } from "../views/searchView";
 import * as resultView from "../views/resultView";
 
@@ -20,7 +20,11 @@ const controlSearch = async () => {
       state.currentCryptoSelected = false;
     }
   } else {
-    console.log("Sin data");
+    if (state.delaySearch) {
+      clearTimeout(state.delaySearch);
+    }
+    console.log("Buscando");
+    state.delaySearch = setTimeout(controlSearch, 2000);
   }
 };
 
@@ -57,6 +61,12 @@ const startController = () => {
       controlGetCurrencyInformation();
     } else {
       controlSearch();
+    }
+  });
+  //Habilitar convertidor de divisa
+  elements.currencieDataResult.addEventListener("keyup", () => {
+    if (event.target.matches(`.${elementsStrings.inputCurrencyOrigin}`) || event.target.matches(`.${elementsStrings.inputCurrencyDestiny}`)) {
+      console.log("Convertir!");
     }
   });
   //Realizar consulta de todas las monedas para realizar sugerencias en busqueda

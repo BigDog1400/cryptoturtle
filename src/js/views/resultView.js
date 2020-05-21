@@ -30,6 +30,8 @@ const parseReposLinks = reposUrls => {
   return results;
 };
 
+const formatterPercentage = new Intl.NumberFormat(navigator.language, { style: "unit", unit: "percent", signDisplay: "always", maximumFractionDigits: 2 });
+
 const parseGeneralLinks = anyUrl => {
   const url = new URL(anyUrl);
   return `${url.hostname.match(/[^w{3}.].*/)}`;
@@ -86,7 +88,7 @@ export const renderResult = data => {
               ${new Intl.NumberFormat({ style: "currency", currency: "USD" }, { maximumFractionDigits: 20 }).format(data.market_data.current_price.usd)}
             </span>
             <span class="data-price-changes-24h ${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}">
-              (${new Intl.NumberFormat({ style: "unit", unit: "percent" }, { maximumFractionDigits: 2 }).format(data.market_data.price_change_percentage_24h)}%)
+              (${formatterPercentage.format(data.market_data.price_change_percentage_24h)})
             </span>
           </div>
           <table class="market-data">
@@ -123,24 +125,21 @@ export const renderResult = data => {
           <tbody>
             <tr>
               <th>24h:</th>
-              <td class="${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}" >${new Intl.NumberFormat(
-    { style: "unit", unit: "percent" },
-    { maximumFractionDigits: 2 }
-  ).format(data.market_data.price_change_percentage_24h)}%</td>
+              <td class="${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}" >${formatterPercentage.format(
+    data.market_data.price_change_percentage_24h
+  )}</td>
             </tr>
             <tr>
               <th>7d:</th>
-               <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat(
-    { style: "unit", unit: "percent" },
-    { maximumFractionDigits: 2 }
-  ).format(data.market_data.price_change_percentage_7d)}%</td>
+               <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${formatterPercentage.format(
+    data.market_data.price_change_percentage_7d
+  )}</td>
             </tr>
             <tr>
               <th>14d:</th>
-          <td class="${data.market_data.price_change_percentage_14d > 0 ? "bullish" : "bear"}">${new Intl.NumberFormat(
-    { style: "unit", unit: "percent" },
-    { maximumFractionDigits: 2 }
-  ).format(data.market_data.price_change_percentage_14d)}%</td>
+        <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${formatterPercentage.format(
+    data.market_data.price_change_percentage_14d
+  )}</td>
              </tr>
           </tbody>
         </table>

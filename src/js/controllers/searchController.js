@@ -32,7 +32,11 @@ const prepareSearchElements = async () => {
   // 1) Get the currents cryptos
   state.currentGlobalCryptos = new searchAllCryptos();
   //TODO: generar resolve and reject para generar avisos al usuario
-  await state.currentGlobalCryptos.getAllCurrentsCryptos();
+  try {
+    await state.currentGlobalCryptos.getAllCurrentsCryptos();
+  } catch (e) {
+    console.log(`Error : ${e}`);
+  }
 };
 
 const controlGetCurrencyInformation = async () => {
@@ -40,11 +44,20 @@ const controlGetCurrencyInformation = async () => {
     // Render Loading Spinner
     resultView.renderLoaderSpinner();
     state.currentSearch = new searchDataOfCurrency(state.currentCryptoSelected.dataset.id);
-    await state.currentSearch.getData();
-    console.log(state.currentSearch);
+    try {
+      await state.currentSearch.getData();
+      console.log(state.currentSearch);
+      resultView.renderResult(state.currentSearch.data);
+    } catch (e) {
+      console.log(`Error : ${e}`);
+    }
     //Render results
-    resultView.renderResult(state.currentSearch.data);
   }
+};
+
+const controlConvertValue = (elementSelected, amount) => {
+  const newValues = state.currentSearch.convertValue(elementSelected, amount);
+  resultView.renderConversion(newValues, elementSelected);
 };
 
 const controlChangeCryptoSelected = () => {
@@ -66,7 +79,7 @@ const startController = () => {
   //Habilitar convertidor de divisa
   elements.currencieDataResult.addEventListener("keyup", () => {
     if (event.target.matches(`.${elementsStrings.inputCurrencyOrigin}`) || event.target.matches(`.${elementsStrings.inputCurrencyDestiny}`)) {
-      console.log("Convertir!");
+      controlConvertValue(event.target.className, event.target.value);
     }
   });
   //Realizar consulta de todas las monedas para realizar sugerencias en busqueda

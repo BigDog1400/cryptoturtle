@@ -1,4 +1,4 @@
-import { elements } from "./base";
+import { elements, elementsStrings } from "./base";
 import Cryptocurrency from "../models/SearchCoin";
 import { parse } from "querystring";
 
@@ -35,6 +35,11 @@ const formatterPercentage = new Intl.NumberFormat(navigator.language, { style: "
 const parseGeneralLinks = anyUrl => {
   const url = new URL(anyUrl);
   return `${url.hostname.match(/[^w{3}.].*/)}`;
+};
+
+export const renderConversion = (value, element) => {
+  const boxResult = element === elementsStrings.inputCurrencyOrigin ? elementsStrings.inputCurrencyDestiny : elementsStrings.inputCurrencyOrigin;
+  document.querySelector(`.${boxResult}`).value = value;
 };
 
 export const renderResult = data => {
@@ -114,10 +119,10 @@ export const renderResult = data => {
         </div>
       </div>
       <div class="currencie-calculadora">
-        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="text" class="currencie-origin-input" />
+        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currencie-origin-input" />
         <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
         <span class="symbol-destiny">USD</span>
-        <input class="currencie-destiny-input" type="text" />
+        <input class="currencie-destiny-input" type="number" />
       </div>
       <div class="currencie__data-prices-changes">
         <span>Last Changes:</span>
@@ -137,7 +142,7 @@ export const renderResult = data => {
             </tr>
             <tr>
               <th>14d:</th>
-        <td class="${data.market_data.price_change_percentage_7d > 0 ? "bullish" : "bear"}">${formatterPercentage.format(
+        <td class="${data.market_data.price_change_percentage_14d > 0 ? "bullish" : "bear"}">${formatterPercentage.format(
     data.market_data.price_change_percentage_14d
   )}</td>
              </tr>

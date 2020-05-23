@@ -118,7 +118,7 @@ export const renderResult = data => {
           </table>
         </div>
       </div>
-      <div class="currency-calculadora">
+      <div class="currency-calculator">
         <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currency-origin-input" />
         <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
         <span class="symbol-destiny">USD</span>

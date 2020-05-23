@@ -249,12 +249,20 @@ Source: https://loading.io/css/
   margin-top: 20px;
   padding-bottom: 40px;
 }
-.currency-calculadora {
+.currency-calculator {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
+
+.currency-calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .currency__data-prices-changes {
   margin-top: 40px;
   align-self: center;
@@ -271,7 +279,6 @@ Source: https://loading.io/css/
 }
 .currency-origin-input,
 .currency-destiny-input {
-  width: 20%;
   border: 1px solid #494949;
   padding: 20px;
   background-color: #dfdfdf;
@@ -280,6 +287,12 @@ Source: https://loading.io/css/
   .search__box-input-container,
   .search__box-result-container {
     width: 100%;
+  }
+  body {
+    font-size: 12px;
+  }
+  .currency-calculator {
+    flex-flow: column;
   }
 }
 @media screen and (min-width: 900px) {

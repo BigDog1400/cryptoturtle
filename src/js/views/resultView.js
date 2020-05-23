@@ -11,7 +11,7 @@ export const renderLoaderSpinner = () => {
           <div></div>
         </div>
       </div>`;
-  elements.currencieDataResult.innerHTML = htmlTemplate;
+  elements.currencyDataResult.innerHTML = htmlTemplate;
 };
 
 const parseReposLinks = reposUrls => {
@@ -44,14 +44,14 @@ export const renderConversion = (value, element) => {
 
 export const renderResult = data => {
   const htmlTemplate = `
-     <div class="currencie__data">
-        <div class="currencie__data-general-info">
+     <div class="currency__data">
+        <div class="currency__data-general-info">
           <div class="basic-info-name">
-            <img src="${data.image.large}" class="cryptocurrencie-logo" alt="${data.name} logo" /> <span class="cryptocurrencie-name"> ${data.name} </span
-            ><span class="cryptocurrencie-symbol">(${data.symbol.toUpperCase()})</span>
+            <img src="${data.image.large}" class="cryptocurrency-logo" alt="${data.name} logo" /> <span class="cryptocurrency-name"> ${data.name} </span
+            ><span class="cryptocurrency-symbol">(${data.symbol.toUpperCase()})</span>
           </div>
-          <div class="currencie__data-detailed-info">
-            <table class="currencie-general-info">
+          <div class="currency__data-detailed-info">
+            <table class="currency-general-info">
               <tbody>
                 <tr>
                   <th>Market Cap</th>
@@ -86,8 +86,8 @@ export const renderResult = data => {
           </div>
         </div>
 
-        <div class="currencie__data-prices-info">
-          <div class="currencie__data-price">
+        <div class="currency__data-prices-info">
+          <div class="currency__data-price">
             <span>Price</span>
             <span class="data-current-price">
               ${new Intl.NumberFormat({ style: "currency", currency: "USD" }, { maximumFractionDigits: 20 }).format(data.market_data.current_price.usd)}
@@ -118,13 +118,13 @@ export const renderResult = data => {
           </table>
         </div>
       </div>
-      <div class="currencie-calculadora">
-        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currencie-origin-input" />
+      <div class="currency-calculadora">
+        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currency-origin-input" />
         <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
         <span class="symbol-destiny">USD</span>
-        <input class="currencie-destiny-input" type="number" />
+        <input class="currency-destiny-input" type="number" />
       </div>
-      <div class="currencie__data-prices-changes">
+      <div class="currency__data-prices-changes">
         <span>Last Changes:</span>
         <table class="market-changes">
           <tbody>
@@ -150,5 +150,5 @@ export const renderResult = data => {
         </table>
       </div>
 `;
-  elements.currencieDataResult.innerHTML = htmlTemplate;
+  elements.currencyDataResult.innerHTML = htmlTemplate;
 };

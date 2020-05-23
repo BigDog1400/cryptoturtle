@@ -178,10 +178,10 @@ Source: https://loading.io/css/
   margin: 0 auto;
 }
 /* 
-  Section for display data about a currencie
+  Section for display data about a currency
 */
 
-.currencie__data_container {
+.currency__data_container {
   display: flex;
   background-color: #2c2c2c;
   margin: 0 auto;
@@ -189,37 +189,37 @@ Source: https://loading.io/css/
   width: 100%;
   flex-flow: column;
 }
-.currencie__data {
+.currency__data {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.currencie__data-prices-info {
+.currency__data-prices-info {
   margin-top: 30px;
   display: flex;
   flex-flow: column;
 }
-.currencie__data-price {
+.currency__data-price {
   align-self: flex-end;
 }
-.currencie__data-general-info {
+.currency__data-general-info {
   margin-top: 30px;
 }
-.cryptocurrencie-logo {
+.cryptocurrency-logo {
   width: 50px;
 }
 
-.cryptocurrencie-name {
+.cryptocurrency-name {
   font-weight: 600;
   color: #eeeeee;
   font-size: 225%;
 }
-.cryptocurrencie-symbol {
+.cryptocurrency-symbol {
   color: #dfdfdf;
   font-weight: 500;
   font-style: italic;
 }
-.currencie__data-price {
+.currency__data-price {
   margin-top: 20px;
   font-size: 200%;
 }
@@ -237,7 +237,7 @@ Source: https://loading.io/css/
   background-color: #494949;
 }
 .market-data,
-.currencie-general-info {
+.currency-general-info {
   border-spacing: 10px;
   text-align: justify;
   margin-top: 20px;
@@ -249,13 +249,13 @@ Source: https://loading.io/css/
   margin-top: 20px;
   padding-bottom: 40px;
 }
-.currencie-calculadora {
+.currency-calculadora {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.currencie__data-prices-changes {
+.currency__data-prices-changes {
   margin-top: 40px;
   align-self: center;
 }
@@ -269,8 +269,8 @@ Source: https://loading.io/css/
 .swap-icon {
   height: 40px;
 }
-.currencie-origin-input,
-.currencie-destiny-input {
+.currency-origin-input,
+.currency-destiny-input {
   width: 20%;
   border: 1px solid #494949;
   padding: 20px;
@@ -287,7 +287,7 @@ Source: https://loading.io/css/
   .search__box-result-container {
     width: 30%;
   }
-  .currencie__data_container {
+  .currency__data_container {
     width: 100%;
   }
 }

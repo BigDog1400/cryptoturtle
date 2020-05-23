@@ -77,7 +77,7 @@ const startController = () => {
     }
   });
   //Habilitar convertidor de divisa
-  elements.currencieDataResult.addEventListener("keyup", () => {
+  elements.currencyDataResult.addEventListener("keyup", () => {
     if (event.target.matches(`.${elementsStrings.inputCurrencyOrigin}`) || event.target.matches(`.${elementsStrings.inputCurrencyDestiny}`)) {
       controlConvertValue(event.target.className, event.target.value);
     }

@@ -6,5 +6,6 @@ export const elements = {
 };
 export const elementsStrings = {
   inputCurrencyDestiny: "currency-destiny-input",
-  inputCurrencyOrigin: "currency-origin-input"
+  inputCurrencyOrigin: "currency-origin-input",
+  butoncopyToClipboardConversion: "copy-icon"
 };

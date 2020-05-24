@@ -32,6 +32,8 @@ const parseReposLinks = reposUrls => {
 
 const formatterPercentage = new Intl.NumberFormat(navigator.language, { style: "unit", unit: "percent", signDisplay: "always", maximumFractionDigits: 2 });
 
+const formatterPrice = new Intl.NumberFormat({ style: "currency", currency: "USD" }, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 const parseGeneralLinks = anyUrl => {
   const url = new URL(anyUrl);
   return `${url.hostname.match(/[^w{3}.].*/)}`;
@@ -40,6 +42,20 @@ const parseGeneralLinks = anyUrl => {
 export const renderConversion = (value, element) => {
   const boxResult = element === elementsStrings.inputCurrencyOrigin ? elementsStrings.inputCurrencyDestiny : elementsStrings.inputCurrencyOrigin;
   document.querySelector(`.${boxResult}`).value = value;
+};
+
+export const copyToClipboardConversion = (currentPrice, name, symbol) => {
+  const el = document.createElement("textarea");
+  const amountInCrypto = document.querySelector(`.${elementsStrings.inputCurrencyOrigin}`).value;
+  const amountInFiat = document.querySelector(`.${elementsStrings.inputCurrencyDestiny}`).value;
+  el.value = `${name}\nCurrent Price: ${currentPrice}$ \n${amountInCrypto} ${symbol} = ${formatterPrice.format(amountInFiat)}$`;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
 };
 
 export const renderResult = data => {
@@ -90,7 +106,7 @@ export const renderResult = data => {
           <div class="currency__data-price">
             <span>Price</span>
             <span class="data-current-price">
-              ${new Intl.NumberFormat({ style: "currency", currency: "USD" }, { maximumFractionDigits: 20 }).format(data.market_data.current_price.usd)}
+              ${formatterPrice.format(data.market_data.current_price.usd)}
             </span>
             <span class="data-price-changes-24h ${data.market_data.price_change_percentage_24h > 0 ? "bullish" : "bear"}">
               (${formatterPercentage.format(data.market_data.price_change_percentage_24h)})
@@ -119,10 +135,14 @@ export const renderResult = data => {
         </div>
       </div>
       <div class="currency-calculator">
-        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currency-origin-input" />
+      <div class="currency-calculator-container">
+        <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currency-origin-input" /> </div>
         <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
+        <div class="currency-calculator-container">
         <span class="symbol-destiny">USD</span>
-        <input class="currency-destiny-input" type="number" />
+        <input class="currency-destiny-input" type="number" /> </div>
+          <img class="copy-icon" src="./imgs/copy-outline.svg" title="Copy" alt="Copy" />
+
       </div>
       <div class="currency__data-prices-changes">
         <span>Last Changes:</span>

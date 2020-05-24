@@ -66,20 +66,34 @@ const controlChangeCryptoSelected = () => {
   state.currentCryptoSelected = event.target;
 };
 
+const controlCopyToClipboardCoversion = () => {
+  resultView.copyToClipboardConversion(
+    state.currentSearch.data.market_data.current_price.usd,
+    state.currentSearch.data.name,
+    state.currentSearch.data.name.toUpperCase()
+  );
+};
+
 const startController = () => {
   //Habilitar caja de busqueda
   elements.inputSearchBox.addEventListener("keyup", () => {
-    console.log(event.key);
     if (event.key === "Enter" || event.key === "Return") {
       controlGetCurrencyInformation();
     } else {
       controlSearch();
     }
   });
+  elements.buttonSearchBox.addEventListener("click", controlGetCurrencyInformation);
   //Habilitar convertidor de divisa
   elements.currencyDataResult.addEventListener("keyup", () => {
     if (event.target.matches(`.${elementsStrings.inputCurrencyOrigin}`) || event.target.matches(`.${elementsStrings.inputCurrencyDestiny}`)) {
       controlConvertValue(event.target.className, event.target.value);
+    }
+  });
+
+  elements.currencyDataResult.addEventListener("click", () => {
+    if (event.target.matches(`.${elementsStrings.butoncopyToClipboardConversion}`)) {
+      controlCopyToClipboardCoversion();
     }
   });
   //Realizar consulta de todas las monedas para realizar sugerencias en busqueda

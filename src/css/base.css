@@ -274,8 +274,12 @@ Source: https://loading.io/css/
   background-color: #1c1c1c;
   border: 1px solid #494949;
 }
-.swap-icon {
+.swap-icon,
+.copy-icon {
   height: 40px;
+}
+.copy-icon:hover {
+  cursor: pointer;
 }
 .currency-origin-input,
 .currency-destiny-input {

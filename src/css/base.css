@@ -287,6 +287,44 @@ Source: https://loading.io/css/
   padding: 20px;
   background-color: #dfdfdf;
 }
+
+/* 
+  Section for display list of currency
+*/
+
+.currency_list {
+  font-family: "roboto";
+  text-align: center;
+}
+.currency_list h1 {
+  padding: 10px 0px;
+  border-radius: 12px;
+}
+
+.currency_list_container {
+  display: flex;
+}
+.currency_list_table {
+  border-collapse: collapse;
+  border-radius: 10px 10px 0px 0px;
+  min-height: 150px;
+  flex: 1 0 auto;
+}
+
+.currency_list_table {
+  background-color: #2c2c2c;
+}
+.currency_list-header {
+  font-size: 120%;
+}
+.currency_list-header tr {
+  height: 50px;
+  background-color: #727272;
+}
+.currency_list-result {
+  height: 40px;
+}
+
 @media screen and (max-width: 425px) {
   .search__box-input-container,
   .search__box-result-container {

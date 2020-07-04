@@ -34,6 +34,7 @@ const prepareSearchElements = async () => {
   //TODO: generar resolve and reject para generar avisos al usuario
   try {
     await state.currentGlobalCryptos.getAllCurrentsCryptos();
+    console.log("Buscada finalizada");
   } catch (e) {
     console.log(`Error : ${e}`);
   }

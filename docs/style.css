@@ -1,0 +1,349 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c1c;
+  font-family: "Arial";
+  color: #eeeeee;
+}
+
+header {
+  flex-flow: column;
+  display: flex;
+  margin: 30px auto 20px;
+}
+.title__box {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  font-size: 300%;
+  margin-bottom: 40px;
+  font-family: "Roboto";
+}
+
+.title__box-icon {
+  height: 80px;
+  margin-right: 10px;
+}
+.search__box-input-container,
+.search__box-result-container {
+  display: flex;
+  width: 80%;
+  flex-flow: column;
+}
+
+.search__box {
+  justify-content: center;
+  display: flex;
+  flex: 1 0 100%;
+}
+.search__box-input {
+  border: none;
+  padding: 15px;
+  outline: none;
+  border-radius: 5px 0px 0px 5px;
+  background-color: #333333;
+  flex: 0 1 100%;
+  color: #eeeeee;
+  font-size: 100%;
+}
+.search__box-button {
+  background-color: #333333;
+  color: none;
+  border: none;
+  width: 4em;
+  background-image: url(imgs/search.svg);
+  background-position: center;
+  background-size: 2em;
+  background-repeat: no-repeat;
+  border-radius: 0px 5px 5px 0px;
+  transition: all 0.1s ease-in;
+}
+.search__box-button:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.search__box-result-container {
+  display: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #333333;
+  z-index: 1;
+}
+
+.search__box-input:focus ~ .search__box-result-container,
+.search__box-result-container:hover {
+  display: flex;
+  position: absolute;
+  margin-top: 3.8em;
+}
+.search-box-result-list {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 10px 10px 10px 40px;
+  margin: 0;
+  list-style: none;
+  color: #eeeeee;
+}
+.icon-result-list {
+  vertical-align: middle;
+  height: 15px;
+}
+.result-list-element {
+  cursor: pointer;
+  margin-top: 1em;
+  display: flex;
+  padding: 7px;
+}
+.result-list-element.selected {
+  background-color: #494949;
+}
+.cryptocurrency-result-list {
+  flex: 1 0 auto;
+  margin-left: 10px;
+}
+.rank-result-list {
+  margin-left: 15px;
+}
+
+/* Loading Spinner
+Source: https://loading.io/css/
+*/
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+.loader-spinner {
+  margin: 0 auto;
+}
+/* 
+  Section for display data about a currency
+*/
+
+.currency__data_container {
+  display: flex;
+  background-color: #2c2c2c;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 100%;
+  flex-flow: column;
+}
+.currency__data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.currency__data-prices-info {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column;
+}
+.currency__data-price {
+  align-self: flex-end;
+}
+.currency__data-general-info {
+  margin-top: 30px;
+}
+.cryptocurrency-logo {
+  width: 50px;
+}
+
+.cryptocurrency-name {
+  font-weight: 600;
+  color: #eeeeee;
+  font-size: 225%;
+}
+.cryptocurrency-symbol {
+  color: #dfdfdf;
+  font-weight: 500;
+  font-style: italic;
+}
+.currency__data-price {
+  margin-top: 20px;
+  font-size: 200%;
+}
+.bullish {
+  color: #079a73;
+}
+.bear {
+  color: #e15241;
+}
+
+.link-website {
+  padding: 4px;
+  margin: 7px;
+  color: #39cca5;
+  background-color: #494949;
+}
+.market-data,
+.currency-general-info {
+  border-spacing: 10px;
+  text-align: justify;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+.market-changes {
+  border-spacing: 10px;
+  text-align: justify;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+.currency-calculator {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.currency-calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currency__data-prices-changes {
+  margin-top: 40px;
+  align-self: center;
+}
+.symbol-origin,
+.symbol-destiny {
+  padding: 20px;
+  color: #dfdfdf;
+  background-color: #1c1c1c;
+  border: 1px solid #494949;
+}
+.swap-icon,
+.copy-icon {
+  height: 40px;
+}
+.copy-icon:hover {
+  cursor: pointer;
+}
+.currency-origin-input,
+.currency-destiny-input {
+  border: 1px solid #494949;
+  padding: 20px;
+  background-color: #dfdfdf;
+}
+
+/* 
+  Section for display list of currency
+*/
+
+.currency_list {
+  font-family: "roboto";
+  text-align: center;
+}
+.currency_list h1 {
+  padding: 10px 0px;
+  border-radius: 12px;
+}
+
+.currency_list_container {
+  display: flex;
+}
+.currency_list_table {
+  border-collapse: collapse;
+  border-radius: 10px 10px 0px 0px;
+  min-height: 150px;
+  flex: 1 0 auto;
+}
+
+.currency_list_table {
+  background-color: #2c2c2c;
+}
+.currency_list-header {
+  font-size: 120%;
+}
+.currency_list-header tr {
+  height: 50px;
+  background-color: #727272;
+}
+.currency_list-result {
+  height: 40px;
+}
+
+@media screen and (max-width: 425px) {
+  .search__box-input-container,
+  .search__box-result-container {
+    width: 100%;
+  }
+  body {
+    font-size: 12px;
+  }
+  .currency-calculator {
+    flex-flow: column;
+  }
+}
+@media screen and (min-width: 900px) {
+  .search__box-input-container,
+  .search__box-result-container {
+    width: 30%;
+  }
+  .currency__data_container {
+    width: 100%;
+  }
+}
+

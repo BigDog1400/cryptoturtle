@@ -9,11 +9,11 @@ module.exports = {
     style: "./src/css/index.js"
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     filename: "js/[name].js"
   },
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./docs"
   },
   plugins: [
     new MiniCssExtractPlugin(),

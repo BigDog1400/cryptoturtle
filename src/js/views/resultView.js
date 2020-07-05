@@ -1,5 +1,6 @@
 import { elements, elementsStrings } from "./base";
-import Cryptocurrency from "../models/SearchCoin";
+import imgSwapHorizontal from "../../img/swap-horizontal.svg";
+import imgCopyOutline from "../../img/copy-outline.svg";
 
 export const renderLoaderSpinner = () => {
   const htmlTemplate = ` <div class="loader-spinner">
@@ -140,11 +141,11 @@ export const renderResult = data => {
       <div class="currency-calculator">
       <div class="currency-calculator-container">
         <span class="symbol-origin">${data.symbol.toUpperCase()}</span> <input type="number" class="currency-origin-input" /> </div>
-        <img class="swap-icon" src="./imgs/swap-horizontal.svg" alt="" />
+        <img class="swap-icon" src="${imgSwapHorizontal}"/>
         <div class="currency-calculator-container">
         <span class="symbol-destiny">USD</span>
         <input class="currency-destiny-input" type="number" /> </div>
-          <img class="copy-icon" src="./imgs/copy-outline.svg" title="Copy" alt="Copy" />
+          <img class="copy-icon" src="${imgCopyOutline}" title="Copy" alt="Copy" />
 
       </div>
       <div class="currency__data-prices-changes">
@@ -187,8 +188,8 @@ export const rendertListResult = data => {
               <td>${data.symbol}</td>
               <td>${formatterPrice.format(data.current_price)}</td>
               <td class="${data.price_change_percentage_24h > 0 ? "bullish" : "bear"}">${formatterPercentage.format(data.price_change_percentage_24h)}</td>
-              <td>${new Intl.NumberFormat().format(data.circulating_supply)}</td>
-              <td>${data.total_supply === null ? "∞" : new Intl.NumberFormat().format(data.total_supply)}</td>
+              <td>${new Intl.NumberFormat().format(data.circulating_supply)} ${data.symbol.toUpperCase()}</td>
+              <td>${data.total_supply === null ? "∞" : new Intl.NumberFormat().format(data.total_supply)} ${data.symbol.toUpperCase()}</td>
             </tr>`
       )
       .join("")}

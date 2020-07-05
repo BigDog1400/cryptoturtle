@@ -26,8 +26,45 @@
       </div>
     </header>
     <section class="currency__data_container"></section>
-    <section>
+    <section class="currency_list">
       <h1>Top criptomonedas actualmente</h1>
+      <div class="currency_list_container">
+        <table class="currency_list_table">
+          <thead class="currency_list-header">
+            <th>Rank #</th>
+            <th>Currency</th>
+            <th></th>
+            <th>Current Price</th>
+            <th>24H Change</th>
+            <th>Circulating Supply</th>
+            <th>Total Supply</th>
+          </thead>
+
+          <tbody class="currency_list-body">
+            <tr>
+              <td colspan="9">
+                <div class="loader-spinner">
+                  <div class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <!-- <tr class="currency_list-result">
+              <td>1</td>
+              <td>Bitcoin</td>
+              <td>BTC</td>
+              <td>9000 $</td>
+              <td>-24%</td>
+              <td>111.624.322</td>
+              <td>21.000.000 Bitcoin</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
     </section>
   <script type="text/javascript" src="js/polyfill.js"></script><script type="text/javascript" src="js/search.js"></script><script type="text/javascript" src="js/style.js"></script></body>
 </html>

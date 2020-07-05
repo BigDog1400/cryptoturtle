@@ -1,6 +1,5 @@
 import { elements, elementsStrings } from "./base";
 import Cryptocurrency from "../models/SearchCoin";
-import { parse } from "querystring";
 
 export const renderLoaderSpinner = () => {
   const htmlTemplate = ` <div class="loader-spinner">
@@ -32,7 +31,11 @@ const parseReposLinks = reposUrls => {
 
 const formatterPercentage = new Intl.NumberFormat(navigator.language, { style: "unit", unit: "percent", signDisplay: "always", maximumFractionDigits: 2 });
 
-const formatterPrice = new Intl.NumberFormat({ style: "currency", currency: "USD" }, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const formatterPrice = new Intl.NumberFormat(
+  navigator.language,
+  { style: "currency", currency: "USD" },
+  { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+);
 
 const parseGeneralLinks = anyUrl => {
   const url = new URL(anyUrl);
@@ -128,7 +131,7 @@ export const renderResult = data => {
               </tr>
               <tr>
                 <th>Max Supply</th>
-                <td>${new Intl.NumberFormat().format(data.market_data.total_supply)}  ${data.name}</td>
+                <td>${data.market_data.total_supply === null ? "∞" : new Intl.NumberFormat().format(data.market_data.total_supply)}  ${data.name}</td>
               </tr>
             </tbody>
           </table>
@@ -171,4 +174,24 @@ export const renderResult = data => {
       </div>
 `;
   elements.currencyDataResult.innerHTML = htmlTemplate;
+};
+
+export const rendertListResult = data => {
+  document.querySelector(`.${elementsStrings.currencyListBody}`).innerHTML = "";
+  const htmlTemplate = `
+    ${data
+      .map(
+        data => ` <tr class="currency_list-result">
+              <td>${data.market_cap_rank}</td>
+              <td><img  class="icon-result-list" src="${data.image}"> ${data.name}</td>
+              <td>${data.symbol}</td>
+              <td>${formatterPrice.format(data.current_price)}</td>
+              <td class="${data.price_change_percentage_24h > 0 ? "bullish" : "bear"}">${formatterPercentage.format(data.price_change_percentage_24h)}</td>
+              <td>${new Intl.NumberFormat().format(data.circulating_supply)}</td>
+              <td>${data.total_supply === null ? "∞" : new Intl.NumberFormat().format(data.total_supply)}</td>
+            </tr>`
+      )
+      .join("")}
+  `;
+  document.querySelector(`.${elementsStrings.currencyListBody}`).innerHTML = htmlTemplate;
 };

@@ -4,8 +4,10 @@ export const elements = {
   searchBoxResults: document.querySelector(".search__box-result-container"),
   currencyDataResult: document.querySelector(".currency__data_container")
 };
+
 export const elementsStrings = {
   inputCurrencyDestiny: "currency-destiny-input",
   inputCurrencyOrigin: "currency-origin-input",
-  butoncopyToClipboardConversion: "copy-icon"
+  butoncopyToClipboardConversion: "copy-icon",
+  currencyListBody: "currency_list-body"
 };
